@@ -1,0 +1,19 @@
+---
+- hosts: fortigates
+  collections:
+   - fortinet.fortios
+  connection: httpapi
+  vars:
+   vdom: "root"
+   ansible_httpapi_use_ssl: no
+   ansible_httpapi_validate_certs: no
+   ansible_httpapi_port: 80
+  tasks:
+  - name: Configure user groups.
+    fortios_user_group:
+      vdom:  "{{ vdom }}"
+      state: "present"
+      user_group:
+        name: "newgroup"
+        member:
+          - name: "newuser"
