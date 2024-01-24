@@ -1,0 +1,28 @@
+---
+- hosts: fortigates
+  collections:
+    - fortinet.fortios
+  connection: httpapi
+  vars:
+    vdom: "root"
+    ansible_httpapi_use_ssl: no
+    ansible_httpapi_validate_certs: no
+    ansible_httpapi_port: 80
+  tasks:
+    - name: Create firewall address.
+      fortios_firewall_address:
+        vdom: "{{ vdom }}"
+        state: "present"
+        firewall_address:
+          name: "new_address"
+          type: "ipmask"
+          subnet: "192.0.2.0 255.255.255.0"
+
+    - name: Add address to group.
+      fortios_firewall_addrgrp:
+        vdom: "{{ vdom }}"
+        state: "present"
+        firewall_addrgrp:
+          name: "new_group"
+          member:
+            - name: "new_address"
