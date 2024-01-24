@@ -1,0 +1,4 @@
+tasks:
+  - name: Use a module from a collection
+    fortinet.fortios:2.3.4.fortios_user_local:
+      option1: value1
