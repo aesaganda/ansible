@@ -14,5 +14,5 @@
       vdom:  "{{ vdom }}"
       state: "present"
       user_local:
-        name: "kekeworld"
-        passwd: "newpassword"
+        name: "{{ lookup('env', 'USER_NAME') }}"
+        passwd: "{{ lookup('env', 'USER_PASSWORD') }}"
