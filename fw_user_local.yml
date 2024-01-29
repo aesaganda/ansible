@@ -14,5 +14,5 @@
       vdom:  "{{ vdom }}"
       state: "present"
       user_local:
-        name: "newuser"
+        name: "kekeworld"
         passwd: "newpassword"
